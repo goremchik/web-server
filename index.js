@@ -1,3 +1,2 @@
-require('@babel/register');
-require("babel-polyfill");
+require('ts-node/register');
 require('./dist/app');

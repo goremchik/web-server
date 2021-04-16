@@ -1,14 +1,14 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
+import { container } from "tsyringe";
 import { StatusCodes } from 'http-status-codes';
 import { QuoteService } from '../services/quote.service';
-import { QuoteMapper } from '../mappers/quote.mapper';
-import { quoteModel } from '../models/quote.model';
+import { QuoteModel } from '../models/quote.model';
 
-const quoteRouter = new Router();
-const quoteMapper = new QuoteMapper();
-const quoteService = new QuoteService(quoteModel, quoteMapper);
+const quoteRouter = Router();
+container.register("QuoteModel", { useValue: QuoteModel });
+const quoteService = container.resolve(QuoteService);
 
-quoteRouter.get('/', async (req, res) => {
+quoteRouter.get('/', async (req: Request, res: Response) => {
     try {
         const quotes = await quoteService.find();
         res.json(quotes);
@@ -17,16 +17,16 @@ quoteRouter.get('/', async (req, res) => {
     }
 });
 
-quoteRouter.get('/random', async (req, res) => {
+quoteRouter.get('/random', async (req: Request, res: Response) => {
     try {
-        const quote = await quoteService.findRandom(req.query.tag);
+        const quote = await quoteService.findRandom(req.query.tag as string);
         res.json(quote);
     } catch(e) {
         res.status(StatusCodes.NOT_FOUND).json(e);
     }
 });
 
-quoteRouter.post('/', async (req, res) => {
+quoteRouter.post('/', async (req: Request, res: Response) => {
     try {
         const quote = await quoteService.create(req.body);
         res.status(StatusCodes.CREATED).json(quote);
@@ -35,7 +35,7 @@ quoteRouter.post('/', async (req, res) => {
     }
 });
 
-quoteRouter.get('/:id', async (req, res) => {
+quoteRouter.get('/:id', async (req: Request, res: Response) => {
     try {
         const quote = await quoteService.findOne(req.params.id);
         res.json(quote);
@@ -44,7 +44,7 @@ quoteRouter.get('/:id', async (req, res) => {
     }
 });
 
-quoteRouter.put('/:id', async (req, res) => {
+quoteRouter.put('/:id', async (req: Request, res: Response) => {
     try {
         const quote = await quoteService.update(req.params.id, req.body);
         res.json(quote);
@@ -53,7 +53,7 @@ quoteRouter.put('/:id', async (req, res) => {
     }
 });
 
-quoteRouter.delete('/:id', async (req, res) => {
+quoteRouter.delete('/:id', async (req: Request, res: Response) => {
     try {
         await quoteService.delete(req.params.id);
         res.send();

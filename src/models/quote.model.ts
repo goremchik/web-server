@@ -1,7 +1,6 @@
-import mongoose, { Schema } from 'mongoose'
+import { Schema, model } from 'mongoose';
 
 export const QuoteSchema = new Schema({
-	id: { type: String, index: true },
 	author: { type: String, required: true },
 	text: { type: String, required: true },
 	source: { type: String },
@@ -12,4 +11,4 @@ export const QuoteSchema = new Schema({
 	isDeleted: { type: Boolean, required: true },
 });
 
-export const quoteModel = mongoose.model('Quote', QuoteSchema)
+export const QuoteModel = model('Quote', QuoteSchema);

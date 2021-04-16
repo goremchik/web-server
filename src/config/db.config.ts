@@ -1,9 +1,15 @@
+import { singleton, inject } from "tsyringe";
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
+import { IDBConfig, IEnv } from '../interfaces';
 
 config();
+
+@singleton()
 export class DBConfig {
-    constructor(env) {
+    configuration: IDBConfig;
+
+    constructor(@inject('env') env: IEnv) {
         this.configuration = {
             host: env.DB_HOST,
             port: env.DB_PORT,
@@ -13,7 +19,7 @@ export class DBConfig {
         }
     }
 
-    connect() {
+    connect(): Promise<typeof import("mongoose")> {
         const { host, database, user, password } = this.configuration;
         return mongoose.connect(
             `mongodb+srv://${user}:${password}@${host}/${database}?retryWrites=true&w=majority`,
@@ -21,9 +27,7 @@ export class DBConfig {
         );
     }
 
-    close() {
+    close(): Promise<void> {
         return mongoose.connection.close(false);
     }
 }
-
-export const dbConfig = new DBConfig(process.env);

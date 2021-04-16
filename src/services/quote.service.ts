@@ -1,15 +1,21 @@
-export class QuoteService {
-    constructor(quoteModel, quoteMapper) {
-        this.quoteModel = quoteModel;
-        this.quoteMapper = quoteMapper;
-    }
+import { IQuote } from '../interfaces';
+import { injectable, inject } from 'tsyringe';
+import { QuoteMapper } from '../mappers/quote.mapper';
+import { Model, Schema } from 'mongoose';
 
-    async find() {
+@injectable()
+export class QuoteService {
+    constructor(
+        @inject('QuoteModel') private quoteModel: Model<any, Schema>,
+        private quoteMapper: QuoteMapper,
+    ) {}
+
+    async find(): Promise<IQuote[]> {
         const data = await this.quoteModel.find({ isDeleted: false });
         return data.map(this.quoteMapper.toDomain);
     }
 
-    async findRandom(tag) {
+    async findRandom(tag: string): Promise<IQuote> {
         const condition = [
             { isDeleted: false },
             { $or:[{ tags: tag }, { text: { $regex: new RegExp(tag, 'i') } }] },
@@ -27,7 +33,7 @@ export class QuoteService {
         return this.quoteMapper.toDomain(item);
     }
 
-    async findOne(id) {
+    async findOne(id: string): Promise<IQuote> {
         const item = await this.quoteModel.findOne({ _id: id, isDeleted: false });
         if (!item) {
             throw { message: 'Item not found'};
@@ -35,13 +41,13 @@ export class QuoteService {
         return this.quoteMapper.toDomain(item);
     }
 
-    async create(inputItem) {
+    async create(inputItem: IQuote): Promise<IQuote> {
         const item = await this.quoteModel
             .create(this.quoteMapper.toDalEntity(inputItem));
         return this.quoteMapper.toDomain(item);
     }
 
-    async update(id, inputItem) {
+    async update(id: string, inputItem: IQuote): Promise<IQuote> {
         await this.findOne(id);
         const item = await this.quoteModel.findOneAndUpdate(
             {_id: id },
@@ -51,7 +57,7 @@ export class QuoteService {
         return this.quoteMapper.toDomain(item);
     }
 
-    async delete(id) {
+    async delete(id: string): Promise<void> {
         await this.quoteModel.updateOne({ _id: id }, { isDeleted: true });
     }
 }
