@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.idea/
+.vscode/
+coverage/ 
+client/dist
+static/
+.env
