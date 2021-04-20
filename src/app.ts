@@ -7,7 +7,6 @@ import { healthCheckRouter } from './routers/health-check.router';
 
 const app = express();
 
-app.use(express.static('static'));
 app.use(express.json());
 app.use('/api/quotes', quoteRouter);
 app.use('/', healthCheckRouter);
