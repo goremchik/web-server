@@ -2,6 +2,7 @@ export const environment = {
   production: true,
 
   apiUrls: {
-    quote: '',
+    quote: '/api',
+    share: '',
   },
 };
