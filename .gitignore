@@ -6,4 +6,5 @@ coverage/
 client/dist
 static/
 .env
-logs/
+logs
+*.backup
