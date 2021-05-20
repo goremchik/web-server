@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { container } from "tsyringe";
-import { HealthCheckService } from '../services/health-check.service';
+import { HealthCheckService } from '../services';
 
 const healthCheckRouter = Router();
 const healthCheckService = container.resolve(HealthCheckService);
