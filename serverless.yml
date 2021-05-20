@@ -1,0 +1,43 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: web-server-share
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-webpack
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-central-1
+  apiGateway:
+    minimumCompressionSize: 1024
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+
+custom:
+  webpack:
+    keepOutputDirectory: true
+    includeModules: true
+    webpackConfig: 'aws.webpack.config.js'
+    packager: 'npm'
+
+# The `functions` block defines what code to deploy
+functions:
+  sendNotification:
+    handler: src/notifications/handler.sendNotification
+
+    # The `events` block defines how to trigger the handler.sendNotification code
+    events:
+      - http:
+          path: share
+          method: post
+          cors: true

@@ -18,3 +18,10 @@ DB connection variables are defined in .env file.
 # Prettier #
 `npm run format` - run prettier auto fix
 `npm run eslint` - run linter check
+
+## AWS ##
+# Lambda #
+ Configure serverless CLI with your AWS credentials. This is necessary for deployment:
+`serverless config credentials --provider aws --key <your_access_key_id> --secret <your_access_key_secret>`
+
+`npm run notifications:deploy` - deploy notification lambda
