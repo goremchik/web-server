@@ -1,18 +1,21 @@
 ### Web Server ###
 DB connection variables are defined in .env file. 
 
-## Client ##
-# Deploy #
-`npm run client:deploy` - build and move client app to static folder
 
 ## Server ##
 # Run #
+
 `npm run server:start` - start builded server app
 # Build #
 `npm run server:build` - build server code
+
 # Watch #
 `npm start`
 `npm run server:watch` - start server and reload on file changes
+
+# Deploy to EC2#
+`cd scripts`
+`./deploy-to-ec2.sh`
 
 ## Other ##
 # Prettier #
