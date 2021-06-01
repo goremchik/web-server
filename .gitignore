@@ -11,3 +11,4 @@ logs
 *.http
 .serverless
 .webpack
+*.zip
