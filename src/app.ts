@@ -1,28 +1,35 @@
 import "reflect-metadata";
 import express from 'express';
 import { container } from "tsyringe";
-import { DBConfig } from './config/db.config';
-import { quoteRouter } from './routers/quote.router';
-import { healthCheckRouter } from './routers/health-check.router';
-
-const app = express();
-
-app.use(express.json());
-app.use('/api/quotes', quoteRouter);
-app.use('/', healthCheckRouter);
+import { StorageType } from './core/enums';
+import { DBConfig } from './core/config/db.config';
+import { QuotesModule } from './quotes/quotes.module';
+import { healthCheckRouter } from './core/routers';
 
 const startApp = async (port: number) => {
-    container.register("env", { useValue: process.env as any });
+    container.register<any>('env', { useValue: process.env });
     const dbConfig = container.resolve(DBConfig);
+    const quotesModule = container.resolve(QuotesModule);
+
+    const app = express();
+    app.use(express.json());
+    app.use('/api/quotes', quotesModule.getRouter());
+    app.use('/', healthCheckRouter);
+    const useMongo = process.env.STORAGE_TYPE === StorageType.Mongo.toString();
 
     try {
-        await dbConfig.connect();
+        if (useMongo) {
+            await dbConfig.connect();
+        }
         const server = app.listen(port, () => console.log(`App starts as port: ${port}`));
         const sigs = ['SIGINT', 'SIGTERM', 'SIGQUIT'];
         sigs.forEach(signal => process.on(signal, () => {
             server.close(async () => {
-                console.log('Server stops. Waiting to close DB connection ...');
-                await dbConfig.close();
+                console.log('Server stops.');
+                if (useMongo) {
+                    console.log('Waiting to close DB connection ...');
+                    await dbConfig.close();
+                }
                 process.exit(0);
             });
         }));

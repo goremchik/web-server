@@ -1,5 +1,6 @@
 import { singleton } from "tsyringe";
-import { IQuote, IMapper } from '../interfaces';
+import { IMapper } from 'src/core/interfaces';
+import { IQuote } from '../interfaces';
 
 @singleton()
 export class QuoteMapper implements IMapper {

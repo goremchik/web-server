@@ -8,3 +8,6 @@ static/
 .env
 logs
 *.backup
+*.http
+.serverless
+.webpack

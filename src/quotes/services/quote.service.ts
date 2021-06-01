@@ -1,7 +1,7 @@
-import { IQuote } from '../interfaces';
-import { injectable, inject } from 'tsyringe';
-import { QuoteMapper } from '../mappers/quote.mapper';
 import { Model, Schema } from 'mongoose';
+import { injectable, inject } from 'tsyringe';
+import { IQuote } from '../interfaces';
+import { QuoteMapper } from '../mappers';
 
 @injectable()
 export class QuoteService {
