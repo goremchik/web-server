@@ -21,7 +21,7 @@ const startApp = async (port: number) => {
         if (useMongo) {
             await dbConfig.connect();
         }
-        const server = app.listen(port, () => console.log(`App starts as port: ${port}`));
+        const server = app.listen(port, () => console.log(`App starts on port: ${port}`));
         const sigs = ['SIGINT', 'SIGTERM', 'SIGQUIT'];
         sigs.forEach(signal => process.on(signal, () => {
             server.close(async () => {
