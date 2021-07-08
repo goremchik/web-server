@@ -3,13 +3,13 @@ version: 0.2
 env:
   variables:
     BUILD_ENV: "production"
-    S3_BUCKET: "quote-app"
-    CLOUDFRONT_DIST_ID: ""
+    S3_BUCKET: "quote-app-fe"
+    CLOUDFRONT_DIST_ID: "E2ELZVZ8Y45G2"
 
 phases:
   install:
     runtime-versions:
-      nodejs: 12.x
+      nodejs: 14.x
 
     commands:
       # temporary fix of YARN cert issue
@@ -22,6 +22,7 @@ phases:
       # Install @angular/cli and app dependencies.
       - echo Installing source NPM dependencies...
       - npm install -g @angular/cli
+      - cd client
       - npm install
 
   build:
@@ -57,7 +58,7 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: 'dist*'
+  base-directory: 'client/dist*'
   discard-paths: yes
 
 cache:
