@@ -60,7 +60,7 @@ export class ShareFormComponent {
     this.shareCancel.emit();
   }
 
-  get isShareFormValid() {
+  get isShareFormValid(): boolean {
     return this.shareFormControl && this.shareFormControl.valid;
   }
 

@@ -2,7 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.test';
 import { Quote } from '../models';
 import { QuoteApiService } from './quote-api.service';
 
@@ -103,7 +103,7 @@ describe('QuoteApiService', () => {
     });
 
     it('should create quote', () => {
-      const url = `${ environment.apiUrls.share }/quotes`;
+      const url = `${ environment.apiUrls.quote }/quotes`;
       const response = {};
 
       service.create(mockQuote).subscribe(data => {
@@ -113,18 +113,17 @@ describe('QuoteApiService', () => {
       const mockReq = httpMock.expectOne(url);
 
       mockReq.flush(response);
-
+      
       expect(mockReq.request.method).toBe('POST');
       expect(mockReq.request.url).toEqual(url);
+      
       expect(mockReq.request.body).toEqual({
-        quote: {
-          ...mockQuote,
-        },
+        quote: mockQuote,
       });
     });
 
     it('should delete quote', () => {
-      const url = `${ environment.apiUrls.share }/quotes`;
+      const url = `${ environment.apiUrls.quote }/quotes`;
       const response = {};
 
       service.delete(mockQuote).subscribe(data => {
@@ -140,9 +139,9 @@ describe('QuoteApiService', () => {
     });
 
     it('should edit quote', () => {
-      const url = `${ environment.apiUrls.share }/quotes`;
+      const url = `${ environment.apiUrls.quote }/quotes`;
       const response = {};
-
+      console.log("GETsdfed", url)
       service.edit(mockQuote).subscribe(data => {
         expect(data).toEqual(response);
       });

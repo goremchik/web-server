@@ -17,7 +17,7 @@ export class MockQuoteApiService {
     return of();
   }
 
-  getRandomByTag(tag: string): Observable<Quote> {
+  getRandomByTag(): Observable<Quote> {
     return of();
   }
 

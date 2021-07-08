@@ -1,11 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
-import { QuotePreviewComponent, QuoteShareModalComponent, ShareFormComponent } from '../../components';
+import { QuotePreviewComponent, QuoteShareModalComponent } from '../../components';
 import { ContactData } from '../../models';
 import { NgxSmartModalServiceMock } from '../../stub';
+import { Component } from '@angular/core';
 
+@Component({
+  selector: 'app-share-form',
+  template: '<form></form>',
+})
+export class ShareFormComponent {}
 
 describe('ShareModalComponent', () => {
   let component: QuoteShareModalComponent;
@@ -15,6 +21,7 @@ describe('ShareModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
       declarations: [
         QuoteShareModalComponent,
         QuotePreviewComponent,
@@ -30,6 +37,7 @@ describe('ShareModalComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(QuoteShareModalComponent);
     component = fixture.componentInstance;
+    // component.
     fixture.detectChanges();
   });
 

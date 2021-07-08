@@ -1,7 +1,7 @@
 import { of } from 'rxjs';
 
 export class NgxSmartModalServiceMock {
-  create() {
+  create(): any {
     return {
       setData(data: any) {
         return {
@@ -18,7 +18,7 @@ export class NgxSmartModalServiceMock {
     };
   }
 
-  getModal(id: any) {
+  getModal(): any {
     return {
       open: function () {
         return;
@@ -35,7 +35,7 @@ export class NgxSmartModalServiceMock {
     };
   }
 
-  get(id: any) {
+  get(): any {
     return {
       open: function () {
         return;
@@ -66,19 +66,23 @@ export class NgxSmartModalServiceMock {
     };
   }
 
-  setModalData() {
+  setModalData(): void {
     return;
   }
 
-  open() {
+  open(): void {
     return;
   }
 
-  getModalStackCount() {
+  getModalStackCount(): void {
     return;
   }
 
-  addModal() {
+  addModal(): void {
+    return;
+  }
+
+  removeModal(): void {
     return;
   }
 }

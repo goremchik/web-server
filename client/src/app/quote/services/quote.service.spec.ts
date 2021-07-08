@@ -70,7 +70,5 @@ describe('QuoteService', () => {
     service.hasShareApiUrl = false;
     service.share({} as Quote, {} as ContactData);
     expect(spy).toHaveBeenCalledTimes(1);
-
   }));
-
 });
