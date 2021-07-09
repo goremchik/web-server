@@ -4,7 +4,6 @@ dist/
 .vscode/
 coverage/ 
 client/dist
-static/
 .env
 logs
 *.backup
