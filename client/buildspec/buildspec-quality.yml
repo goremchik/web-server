@@ -3,8 +3,8 @@ version: 0.2
 env:
   variables:
     CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
-    CODECOV_TOKEN: "152788d6-0bfb-4fed-8660-f8bfaa91ae5f"
-    CODE_CLIMATE_REPORTER_ID: "bab45ed2937e5d0ab141b214ff54dcf3bf216a79768708b0aaa5b36609446d03"
+    # CODECOV_TOKEN: "152788d6-0bfb-4fed-8660-f8bfaa91ae5f"
+    # CODE_CLIMATE_REPORTER_ID: "bab45ed2937e5d0ab141b214ff54dcf3bf216a79768708b0aaa5b36609446d03"
 
 phases:
   install:
@@ -13,7 +13,7 @@ phases:
 
     commands:
       # Get Chrome Information.
-      echo $CODECOV_TOKEN
+      - echo $CODECOV_TOKEN
       - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
       - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 
