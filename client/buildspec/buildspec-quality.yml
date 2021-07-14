@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     CODECOV_COVERAGE_REPORT_PATH: "client/coverage/lcov.info"
+    CODEBUILD_RESOLVED_SOURCE_VERSION: ""
   exported-variables:
     - CODE_CLIMATE_REPORTER_ID
     - CODECOV_TOKEN
