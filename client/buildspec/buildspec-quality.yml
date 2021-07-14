@@ -3,6 +3,8 @@ version: 0.2
 env:
   variables:
     CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
+    CODECOV_TOKEN: "152788d6-0bfb-4fed-8660-f8bfaa91ae5f"
+    CODE_CLIMATE_REPORTER_ID: "bab45ed2937e5d0ab141b214ff54dcf3bf216a79768708b0aaa5b36609446d03"
 
 phases:
   install:
