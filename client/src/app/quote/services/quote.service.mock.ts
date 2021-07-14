@@ -11,7 +11,7 @@ export class MockQuoteService {
     return of({} as Quote);
   }
 
-  share() {
+  share(): Observable<any> {
     return of({});
   }
 }
@@ -23,5 +23,5 @@ export const mockQuoteServiceProvider = {
 
 export const mockQuotesyProvider = {
   provide: QUOTESY,
-  useValue: { random() {} },
+  useValue: { random(): void { return; } },
 };

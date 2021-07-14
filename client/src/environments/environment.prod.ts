@@ -1,4 +1,3 @@
-const a = '';
 export const environment = {
   production: true,
 

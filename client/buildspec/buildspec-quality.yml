@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   variables:
-    CODE_CLIMATE_REPORTER_ID: ""
-    CODECOV_TOKEN: ""
+    CODE_CLIMATE_REPORTER_ID: "bab45ed2937e5d0ab141b214ff54dcf3bf216a79768708b0aaa5b36609446d03"
+    CODECOV_TOKEN: "f85091c3-7864-4e79-9e98-b13f57b936da"
     CODECOV_COVERAGE_REPORT_PATH: "client/coverage/lcov.info"
 
 phases:
@@ -33,11 +33,11 @@ phases:
       - npm install
 
       # Set up all necessary/required env variables and Install CodeClimate reporter.
-#      - export GIT_COMMIT_SHA="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)"
-#      - export GIT_COMMITTED_AT="$(date +%s)"
-#      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#      - chmod +x ./cc-test-reporter
-#      - ./cc-test-reporter before-build
+      - export GIT_COMMIT_SHA="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)"
+      - export GIT_COMMITTED_AT="$(date +%s)"
+      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - chmod +x ./cc-test-reporter
+      - ./cc-test-reporter before-build
 
   build:
     commands:
