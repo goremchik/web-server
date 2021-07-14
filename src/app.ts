@@ -6,7 +6,7 @@ import { DBConfig } from './core/config/db.config';
 import { QuotesModule } from './quotes/quotes.module';
 import { healthCheckRouter } from './core/routers';
 
-const a = '';
+const a = 'a';
 const startApp = async (port: number) => {
     container.register<any>('env', { useValue: process.env });
     const dbConfig = container.resolve(DBConfig);
