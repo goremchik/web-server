@@ -57,7 +57,7 @@ export class QuoteApiService {
     return this.http.post<any>(url, { quote });
   }
 
-  delete(): Observable<any> {
+  delete(quote: Quote): Observable<any> {
     const url = `${ this.apiBase }/quotes`; // TODO
 
     return this.http.delete<any>(url);
