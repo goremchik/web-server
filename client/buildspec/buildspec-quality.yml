@@ -2,10 +2,10 @@ version: 0.2
 
 env:
   variables:
-    # Defined in CodeBuild
-    # CODE_CLIMATE_REPORTER_ID: ""
-    # CODECOV_TOKEN: ""
     CODECOV_COVERAGE_REPORT_PATH: "client/coverage/lcov.info"
+  exported-variables:
+    - CODE_CLIMATE_REPORTER_ID
+    - CODECOV_TOKEN
 
 phases:
   install:
