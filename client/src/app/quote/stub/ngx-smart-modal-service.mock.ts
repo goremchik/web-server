@@ -81,4 +81,6 @@ export class NgxSmartModalServiceMock {
   addModal() {
     return;
   }
+
+  removeModal() {}
 }
