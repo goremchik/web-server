@@ -7,6 +7,7 @@
 
 Angular-based Quote generator with all necessary CI/CD configurations and integrations. 
 
+
 Also it has basic integrations with Ngrx or Ngxs stores (see `feature/ngrxStore` or `feature/ngxsStore` respectively). 
 
 ## Development server
