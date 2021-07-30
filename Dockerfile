@@ -33,7 +33,6 @@ RUN mv ./$PATH_TO_REMOVE/$FILE_TO_SAVE ./$FILE_TO_SAVE
 RUN rm -rf $PATH_TO_REMOVE/*
 RUN mv ./$FILE_TO_SAVE ./$PATH_TO_REMOVE/$FILE_TO_SAVE
 
-
 FROM $BASE_NODE_IMAGE_TAG
 
 # Create app directory
@@ -43,7 +42,6 @@ WORKDIR $WORK_PATH
 # Copy all build artifacts and env variables
 COPY --from=BUILD_IMAGE $WORK_PATH/dist/index.js .
 COPY --from=BUILD_IMAGE $WORK_PATH/node_modules/ ./node_modules
-COPY ./.env .
 
 EXPOSE 3000
 
