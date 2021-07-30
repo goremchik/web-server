@@ -1,13 +1,13 @@
 version: "3.3"
 services:
-    nodeserver:
+    api:
         build:
             context: ./
         container_name: api
         image: ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/app-api
         ports:
             - "3000:3000"
-    nginx:
+    ui:
         depends_on: 
             - api
         restart: always
