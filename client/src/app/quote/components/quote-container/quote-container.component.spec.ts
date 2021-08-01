@@ -97,15 +97,15 @@ describe('QuoteContainerComponent', () => {
 
   });
 
-  describe('openShareModal', () => {
-    it('should open share modal', inject([ QuoteService ], quoteService => {
-      quoteService.hasShareApiUrl = true;
-      const spy = spyOn(quoteService, 'share');
+  // describe('openShareModal', () => {
+  //   it('should open share modal', inject([ QuoteService ], quoteService => {
+  //     quoteService.hasShareApiUrl = true;
+  //     const spy = spyOn(quoteService, 'share');
 
-      component.openShareModal(testQuote);
+  //     component.openShareModal(testQuote);
 
-      expect(spy).toHaveBeenCalled();
-    }));
-  });
+  //     expect(spy).toHaveBeenCalled();
+  //   }));
+  // });
 
 });

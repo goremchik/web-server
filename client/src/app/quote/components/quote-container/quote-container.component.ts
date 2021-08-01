@@ -39,7 +39,7 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
   quote$: Observable<Quote> = this.quoteService.quote$;
 
   @HostListener('dblclick')
-  handleDoubleClick() {
+  handleDoubleClick(): void {
     this.getRandomQuote();
   }
 

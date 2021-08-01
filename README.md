@@ -1,6 +1,9 @@
 ### Web Server ###
-DB connection variables are defined in .env file. 
+[![codecov](https://codecov.io/gh/goremchik/web-server/branch/master/graph/badge.svg?token=MO8MYLIF13)](https://codecov.io/gh/goremchik/web-server)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
+DB connection variables are defined in .env file. 
 
 ## Server ##
 # Run #
