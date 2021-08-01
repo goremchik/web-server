@@ -6,7 +6,7 @@
       "image": "490647521811.dkr.ecr.eu-central-1.amazonaws.com/app-ui",
       "hostname": "ui",
       "essential": true,
-      "memory": 512,
+      "memory": 1024,
       "portMappings": [
         {
           "hostPort": 80,
@@ -19,7 +19,7 @@
       "image": "490647521811.dkr.ecr.eu-central-1.amazonaws.com/app-api",
       "hostname": "api",
       "essential": true,
-      "memory": 512,
+      "memory": 1024,
       "portMappings": [
         {
           "hostPort": 3000,
