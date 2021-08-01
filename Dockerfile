@@ -2,7 +2,7 @@ ARG BASE_IMAGES_REGISTRY="490647521811.dkr.ecr.eu-central-1.amazonaws.com"
 ARG BASE_IMAGES_REPOSITORY="base-images"
 ARG BASE_NODE_IMAGE="node-14.17.1-alpine"
 
-FROM $BASE_IMAGES_REGISTRY/$BASE_IMAGES_REPOSITORY:$BASE_NODE_IMAGE AS BUILD_IMAGE
+FROM $BASE_IMAGES_REGISTRY/$BASE_IMAGES_REPOSITORY:$BASE_NODE_IMAGE
 
 # Create app directory
 ARG WORK_PATH="/usr/src/app"
@@ -42,8 +42,8 @@ ARG WORK_PATH="/usr/src/app"
 WORKDIR $WORK_PATH
 
 # Copy all build artifacts and env variables
-COPY --from=BUILD_IMAGE $WORK_PATH/dist/index.js .
-COPY --from=BUILD_IMAGE $WORK_PATH/node_modules/ ./node_modules
+COPY --from=0 $WORK_PATH/dist/index.js .
+COPY --from=0 $WORK_PATH/node_modules/ ./node_modules
 
 EXPOSE 3000
 
