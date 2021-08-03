@@ -4,10 +4,11 @@
 
 export const environment = {
   production: false,
-
+  isAuthorizationEnabled: false,
   apiUrls: {
-    quote: '/api',
-    share: '',
+    auth: '',
+    quote: '', // Put here your QUOTE API BASE URL. E.g.: api or https://quote.com/api
+    share: '', // Put here your SHARE API BASE URL. E.g.: api or https://share.com/api
   },
 };
 

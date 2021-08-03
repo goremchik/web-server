@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14.x
+      nodejs: 12.x
 
     commands:
       # Get Chrome Information.
@@ -23,7 +23,6 @@ phases:
       # Install @angular/cli and app dependencies.
       - echo Installing source NPM dependencies...
       - npm install -g @angular/cli
-      - cd client
       - npm install
 
   pre_build:
@@ -36,5 +35,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: 'client/dist*'
+  base-directory: 'dist*'
   discard-paths: yes

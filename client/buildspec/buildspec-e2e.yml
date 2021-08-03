@@ -2,12 +2,12 @@ version: 0.2
 
 env:
   variables:
-    CLOUDFRONT_APP_URL: "d2jas05u012m4v.cloudfront.net"
+    CLOUDFRONT_APP_URL: ""
 
 phases:
   install:
     runtime-versions:
-      nodejs: 14.x
+      nodejs: 12.x
 
     commands:
       # Get Chrome Information.
@@ -23,7 +23,6 @@ phases:
       # Install @angular/cli and app dependencies.
       - echo Installing source NPM dependencies...
       - npm install -g @angular/cli
-      - cd client
       - npm install
 
   build:

@@ -1,5 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { ButtonComponent, InputComponent } from '../../../shared/components';
 import { ShareFormComponent } from './share-form.component';
 
 describe('ShareFormComponent', () => {
@@ -14,18 +16,23 @@ describe('ShareFormComponent', () => {
     validators: [],
   };
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
-      declarations: [ ShareFormComponent ],
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+      ],
+      declarations: [
+        ShareFormComponent,
+        ButtonComponent,
+        InputComponent,
+      ],
     })
       .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ShareFormComponent);
     component = fixture.componentInstance;
-    component.shareFormControl =  new FormControl();
     fixture.detectChanges();
   });
 
@@ -53,6 +60,14 @@ describe('ShareFormComponent', () => {
       expect(spy).toHaveBeenCalledWith({
         'test': 'value_test',
       });
+    });
+
+    it('should not submit the form if it is not valid', () => {
+      const spy = spyOn(component.shareSubmit, 'emit');
+
+      component.submit();
+
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 
