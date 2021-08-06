@@ -6,4 +6,6 @@ export interface IEnv {
     DB_PASSWORD: string;
     QUOTES_BUCKET_NAME: string;
     STORAGE_TYPE: string;
+    JWT_SECRET: string;
+    CORS_ORIGIN: string;
 }
