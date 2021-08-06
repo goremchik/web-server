@@ -23,17 +23,13 @@ export class QuoteApiService {
   getAll(): Observable<Quote[]> {
     const url = `${ this.apiBase }/quotes`;
 
-    return this.http.get<Quote[]>(url).pipe(
-      map((res: any) => res.data),
-    );
+    return this.http.get<Quote[]>(url);
   }
 
   getById(id: string): Observable<Quote> {
     const url = `${ this.apiBase }/quotes/${ id }`;
 
-    return this.http.get<Quote>(url).pipe(
-      map((res: any) => res.data),
-    );
+    return this.http.get<Quote>(url);
   }
 
   /**
@@ -42,9 +38,7 @@ export class QuoteApiService {
   getRandom(): Observable<Quote> {
     const url = `${ this.apiBase }/quotes/random`;
 
-    return this.http.get<Quote>(url).pipe(
-      map((res: any) => res.data),
-    );
+    return this.http.get<Quote>(url);
   }
 
   /**
